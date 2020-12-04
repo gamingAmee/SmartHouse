@@ -4,58 +4,32 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>dce6c7e3-ee26-4d79-826b-08594b9ad897</ProjectGuid>
+    <ProjectGuid>{f1d57e23-c7e6-446b-a5ad-546aa912e9b9}</ProjectGuid>
     <avrdevice>ATmega2560</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
-    <OutputType>Executable</OutputType>
+    <OutputType>StaticLibrary</OutputType>
     <Language>C</Language>
-    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
-    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputFileName>lib$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.a</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>SmartHouse</AssemblyName>
-    <Name>SmartHouse</Name>
-    <RootNamespace>SmartHouse</RootNamespace>
+    <AvrGccProjectExtensions>
+    </AvrGccProjectExtensions>
+    <AssemblyName>HouseLib</AssemblyName>
+    <Name>HouseLib</Name>
+    <RootNamespace>HouseLib</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <RamSnippetAddress />
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <OverrideVtorValue />
     <BootSegment>2</BootSegment>
     <ResetRule>0</ResetRule>
     <eraseonlaunchrule>0</eraseonlaunchrule>
     <EraseKey />
-    <AsfFrameworkConfig>
-      <framework-data xmlns="">
-        <options />
-        <configurations />
-        <files />
-        <documentation help="" />
-        <offline-documentation help="" />
-        <dependencies>
-          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.49.1" />
-        </dependencies>
-      </framework-data>
-    </AsfFrameworkConfig>
-    <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
-    <avrtoolserialnumber>J41800117799</avrtoolserialnumber>
-    <avrdeviceexpectedsignature>0x1E9801</avrdeviceexpectedsignature>
-    <com_atmel_avrdbg_tool_atmelice>
-      <ToolOptions>
-        <InterfaceProperties>
-          <JtagDbgClock>200000</JtagDbgClock>
-        </InterfaceProperties>
-        <InterfaceName>JTAG</InterfaceName>
-      </ToolOptions>
-      <ToolType>com.atmel.avrdbg.tool.atmelice</ToolType>
-      <ToolNumber>J41800117799</ToolNumber>
-      <ToolName>Atmel-ICE</ToolName>
-    </com_atmel_avrdbg_tool_atmelice>
-    <avrtoolinterface>JTAG</avrtoolinterface>
-    <avrtoolinterfaceclock>200000</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -86,15 +60,8 @@
   <avrgcc.linker.libraries.Libraries>
     <ListValues>
       <Value>libm</Value>
-      <Value>libHouseLib.a</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
-  <avrgcc.linker.libraries.LibrarySearchPaths>
-    <ListValues>
-      <Value>C:\Users\Patrick\Documents\Atmel Studio\7.0\SmartHouse\SmartHouse\SmartHouselib\Debug</Value>
-      <Value>C:\Users\Patrick\Documents\Atmel Studio\7.0\SmartHouse\SmartHouse\HouseLib\Debug</Value>
-    </ListValues>
-  </avrgcc.linker.libraries.LibrarySearchPaths>
   <avrgcc.assembler.general.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.6.364\include\</Value>
@@ -123,9 +90,9 @@
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.6.364\include\</Value>
-      <Value>../../HouseLib</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
   <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
   <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
   <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
@@ -133,15 +100,8 @@
   <avrgcc.linker.libraries.Libraries>
     <ListValues>
       <Value>libm</Value>
-      <Value>libHouseLib.a</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
-  <avrgcc.linker.libraries.LibrarySearchPaths>
-    <ListValues>
-      <Value>C:\Users\Patrick\Documents\Atmel Studio\7.0\SmartHouse\SmartHouse\SmartHouselib\Debug</Value>
-      <Value>C:\Users\Patrick\Documents\Atmel Studio\7.0\SmartHouse\SmartHouse\HouseLib\Debug</Value>
-    </ListValues>
-  </avrgcc.linker.libraries.LibrarySearchPaths>
   <avrgcc.assembler.general.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.6.364\include\</Value>
@@ -152,7 +112,34 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="main.c">
+    <Folder Include="Temperature" />
+    <Folder Include="Temperature\ADC" />
+    <Folder Include="Temperature\LCD" />
+    <Folder Include="Temperature\Timer" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Temperature\ADC\ADC.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Temperature\ADC\ADC.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Temperature\LCD\lcd.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Temperature\LCD\lcd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Temperature\Temperature.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Temperature\temperature.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Temperature\Timer\Timer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Temperature\Timer\Timer.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
