@@ -10,7 +10,7 @@
 #include <avr/interrupt.h>
 #include "avr/iom2560.h"
 
-void Timer_init(void)
+void Timer1_init(void)
 {
 	TCCR1B |= (1<<WGM12); // Mode 4, CTC = WGM10 - WGM13 = 0100
 	TIMSK1 |= (1<<OCIE1A); // Timer/Counter1, Output Compare A Match Interrupt Enable

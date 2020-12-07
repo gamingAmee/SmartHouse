@@ -8,6 +8,7 @@
 #define F_CPU 16E6
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include "Houselib.h"
 #include "Temperature/temperature.h"
 
 ISR(ADC_vect)
@@ -18,15 +19,16 @@ ISR(ADC_vect)
 ISR(TIMER1_COMPA_vect)
 {
 	LCDPrint();
+	StepperTigger();
+	
 }
 
 int main(void)
 {
-	TempInit();
+	Init();
 	
 	sei();
 	
-    /* Replace with your application code */
     while (1) 
     {
     }
