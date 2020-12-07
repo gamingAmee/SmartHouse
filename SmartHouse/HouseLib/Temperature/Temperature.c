@@ -44,7 +44,7 @@ Pin 2: 10K modstand, GND, Arduino A0,
 #define  RED     _BV(PB1)
 #define  Green  _BV(PB2)
 #define BLACK   _BV(PB3)
-#define DELAY  100
+#define DELAY  10
 
 double tempC;
 int TempOver28 = 28;
@@ -82,7 +82,7 @@ void StepperTigger(void)
 }
 
 
-void StepperInit(void)
+void Stepper_init(void)
 {
 	DDRB |= 0x0f;
 	PORTB |= 0x00;
@@ -90,7 +90,7 @@ void StepperInit(void)
 
 void TempInit(void)
 {
-	StepperInit(); //Stepper Initialization
+	Stepper_init(); //Stepper Initialization
 	Timer1_init(); //Timer Initialization
 	ADC_init(); //ADC(Analog-Digital Converter) Initialization
 	lcd_init(LCD_DISP_ON_CURSOR_BLINK); //LCD Initialization
