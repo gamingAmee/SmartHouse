@@ -112,22 +112,50 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="FrontDoor" />
+    <Folder Include="PhilipsHue" />
+    <Folder Include="PhilipsHue\ADC" />
+    <Folder Include="PhilipsHue\Timer" />
     <Folder Include="Temperature" />
     <Folder Include="Temperature\ADC" />
     <Folder Include="Temperature\LCD" />
     <Folder Include="Temperature\Timer" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrontDoor\FrontDoor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="FrontDoor\FrontDoor.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Houselib.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Houselib.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Temperature\ADC\ADC.c">
+    <Compile Include="PhilipsHue\ADC\ADCA1.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Temperature\ADC\ADC.h">
+    <Compile Include="PhilipsHue\ADC\ADCA1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PhilipsHue\PhilipsHue.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PhilipsHue\PhilipsHue.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PhilipsHue\Timer\Timer3.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PhilipsHue\Timer\Timer3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Temperature\ADC\ADCA0.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Temperature\ADC\ADCA0.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Temperature\LCD\lcd.c">
@@ -142,10 +170,10 @@
     <Compile Include="Temperature\temperature.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Temperature\Timer\Timer.c">
+    <Compile Include="Temperature\Timer\Timer1.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Temperature\Timer\Timer.h">
+    <Compile Include="Temperature\Timer\Timer1.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

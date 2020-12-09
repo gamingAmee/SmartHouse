@@ -10,7 +10,7 @@
 #include <avr/interrupt.h>
 #include "avr/iom2560.h"
 
-void ADC_init(void)
+void ADCA0_init(void)
 {
 	ADMUX = (1 << REFS0); // 5V supply used for ADC reference, select ADC channel 0
 	DIDR0 = (1 << ADC0D); // disable digital input on ADC0 pin

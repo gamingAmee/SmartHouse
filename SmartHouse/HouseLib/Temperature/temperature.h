@@ -9,7 +9,7 @@
 #ifndef TEMPERATURE_H_
 #define TEMPERATURE_H_
 
-int ConvertADCToTemp(unsigned int ADC_data);
+void ConvertADCToTemp(unsigned int ADC_data);
 void LCDPrint(void);
 void StepperTigger(void);
 void TempInit(void);

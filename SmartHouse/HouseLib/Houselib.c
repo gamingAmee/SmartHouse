@@ -6,8 +6,10 @@
  */ 
 
 #include "Temperature/temperature.h"
+#include "PhilipsHue/PhilipsHue.h"
 
 void Init(void)
 {
 	TempInit();
+	RGBInit();
 }

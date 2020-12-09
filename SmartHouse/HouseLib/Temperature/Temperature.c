@@ -36,25 +36,24 @@ Pin 2: 10K modstand, GND, Arduino A0,
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <math.h>
-#include "ADC/ADC.h"
-#include "Timer/Timer.h"
+#include "ADC/ADCA0.h"
+#include "Timer/Timer1.h"
 #include "LCD/lcd.h"
 
-#define BLUE     _BV(PB0)
-#define  RED     _BV(PB1)
-#define  Green  _BV(PB2)
+#define BLUE    _BV(PB0)
+#define RED     _BV(PB1)
+#define Green	_BV(PB2)
 #define BLACK   _BV(PB3)
 #define DELAY  10
 
 double tempC;
 int TempOver28 = 28;
 
-int ConvertADCToTemp(unsigned int ADC_data)
+void ConvertADCToTemp(unsigned int ADC_data)
 {
 	double temp = log(10000.0 * (1024.0 / ADC_data -1));
 	double tempK = 1 / (0.001129148 + (0.000234125 + (0.0000000876741 *temp *temp))*temp);
 	tempC = tempK - 273.15;
-	return tempC;
 }
 
 void LCDPrint(void)
@@ -92,6 +91,6 @@ void TempInit(void)
 {
 	Stepper_init(); //Stepper Initialization
 	Timer1_init(); //Timer Initialization
-	ADC_init(); //ADC(Analog-Digital Converter) Initialization
+	ADCA0_init(); //ADC(Analog-Digital Converter) Initialization
 	lcd_init(LCD_DISP_ON_CURSOR_BLINK); //LCD Initialization
 }
