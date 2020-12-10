@@ -40,7 +40,7 @@ In this project i wanted to make:
 * 2x Led
 * 2x 220 resistor
 
-#### Keypad
+##### Keypad
 Port = Port K
 Name = Port = Arduino Pin = Keyboard cable #
 * R1: PK0, Pin 37, #1
@@ -52,8 +52,8 @@ Name = Port = Arduino Pin = Keyboard cable #
 * C3: PK6, Pin 31, #7
 * C4: PK7, Pin 30, #8
 
-#### Stepper motor
-Port: PortB
+##### Stepper motor
+Port: PortC
 * Pin 1: PC3, Arduino 34
 * Pin 2: PC2, Arduino 35
 * Pin 3: PC1, Arduino 36
@@ -61,27 +61,27 @@ Port: PortB
 * Pin -: GND
 * Pin +: 5V via the power supply
 
-#### Led1
+##### Led 1
 * Pin 1: PB4 Arduino 10,
 * Pin 2: 220 resistor, GND
-* 
-#### Led2
+
+##### Led 2
 * Pin 1: PB5 Arduino 11,
 * Pin 2: 220 resistor, GND
 
 ### A thermistor that opens a window when the temperature gets to high, with a Lcd display.
-#### Components
+##### Components
 * Thermistor
 * 10K resistor
 * Stepper motor
 * Potentiometer
 * LCD Display
  
-#### Thermistor 
+##### Thermistor 
 * Pin 1: 5V
 * Pin 2:  Arduino A0, 10K resistor, GND
 
-#### Stepper motor
+##### Stepper motor
 Port: PortB
 * Pin 1: PB3, Arduino 50
 * Pin 2: PB2, Arduino 51
@@ -90,12 +90,12 @@ Port: PortB
 * Pin -: GND
 * Pin +: 5V via the power supply
 
-#### Potentiometer
+##### Potentiometer
 * Pin 1: GND
 * Pin 2: 5V
 * Pin 3: V0(LCD)
 
-#### LCD Display
+##### LCD Display
 Port: PortA
 * VSS: GND
 * VDD: 5V
