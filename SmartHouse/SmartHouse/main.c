@@ -10,6 +10,7 @@
 #include <avr/interrupt.h>
 #include "Houselib.h"
 #include "Temperature/temperature.h"
+#include "FrontDoor/FrontDoor.h"
 
 ISR(ADC_vect)
 {
@@ -19,8 +20,14 @@ ISR(ADC_vect)
 ISR(TIMER1_COMPA_vect)
 {
 	LCDPrint();
-	StepperTigger();
+	StepperTrigger();
 	
+}
+
+ISR(PCINT2_vect)
+{
+	ColumnScan();
+	StoreKeyPress(ReadRows());
 }
 
 int main(void)

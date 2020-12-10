@@ -6,28 +6,38 @@
 */
 
 /*
-LCD:
-VSS: GND
-VDD: 5V
-V0: Potentiometer Pin3
-RS:PortA PA0, PinA 0, Arduino 22
-RW: PortA PA1, PinA 1, Arduino 23
-Enable: PortA PA2, PinA 2, Arduino 24
-LCD D4: PortA PA3, PinA 3, Arduino 25
-LCD D5: PortA PA4, PinA 4, Arduino 26
-LCD D6: PortA PA5, PinA 5, Arduino 27
-LCD D7: PortA PA6, PinA 6, Arduino 28
-A: 5V
-k: GND
+Thermistor:
+* Pin 1: 5V
+* Pin 2:  Arduino A0, 10K resistor, GND
+
+Stepper motor:
+Port: PortB
+* Pin 1: PB3, Arduino 50
+* Pin 2: PB2, Arduino 51
+* Pin 3: PB1, Arduino 52
+* Pin 4: PB0, Arduino 53
+* Pin -: GND
+* Pin +: 5V via the power supply
 
 Potentiometer:
-Pin 1: GND
-Pin 2: 5V
-Pin 3: V0(LCD)
+* Pin 1: GND
+* Pin 2: 5V
+* Pin 3: V0(LCD)
 
-Thermistor:
-Pin 1: 5V
-Pin 2: 10K modstand, GND, Arduino A0,
+LCD Display:
+Port: PortA
+* VSS: GND
+* VDD: 5V
+* V0: Potentiometer Pin3
+* RS: PA0, PinA 0, Arduino 22
+* RW: PA1, PinA 1, Arduino 23
+* Enable: PA2, PinA 2, Arduino 24
+* LCD D4: PA3, PinA 3, Arduino 25
+* LCD D5: PA4, PinA 4, Arduino 26
+* LCD D6: PA5, PinA 5, Arduino 27
+* LCD D7: PA6, PinA 6, Arduino 28
+* A: 5V
+* K: GND
 */
 
 #define F_CPU 16E6
@@ -40,14 +50,15 @@ Pin 2: 10K modstand, GND, Arduino A0,
 #include "Timer/Timer.h"
 #include "LCD/lcd.h"
 
-#define BLUE     _BV(PB0)
-#define  RED     _BV(PB1)
-#define  Green  _BV(PB2)
+#define BLUE    _BV(PB0)
+#define GREEN   _BV(PB1)
+#define BROWN	_BV(PB2)
 #define BLACK   _BV(PB3)
 #define DELAY  10
 
 double tempC;
 int TempOver28 = 28;
+int TempOver25 = 25;
 
 int ConvertADCToTemp(unsigned int ADC_data)
 {
@@ -66,15 +77,15 @@ void LCDPrint(void)
 	lcd_puts(buffer); //Put converted string to display
 }
 
-void StepperTigger(void)
+void StepperTrigger(void)
 {
-	if (tempC >= TempOver28)
+	if (tempC >= TempOver25)
 	{
 		PORTB = BLACK;
 		_delay_ms(DELAY);
-		PORTB = Green;
+		PORTB = BROWN;
 		_delay_ms(DELAY);
-		PORTB = RED;
+		PORTB = GREEN;
 		_delay_ms(DELAY);
 		PORTB = BLUE;
 		_delay_ms(DELAY);
