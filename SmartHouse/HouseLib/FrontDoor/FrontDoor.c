@@ -103,7 +103,7 @@ char ReadRows()
 	return '.';
 }
 
-void StepperTrigger1(void)
+void StepperTrigger2(void)
 {
 	PORTC = WHITE;
 	_delay_ms(DELAY);
@@ -152,11 +152,11 @@ void StoreKeyPress(char Data)
 		
 		else
 		{
-			if (CheckArray() == 1) //Checks if the entered pin correct
+			if (CheckArray() == 1) //Checks if the entered pin code is correct
 			{
 				
 				ClearArray();
-				StepperTrigger1();
+				StepperTrigger2();
 				PORTB |= (1 << PB4);
 				_delay_ms(1000);
 				PORTB &= ~(1 << PB4);
