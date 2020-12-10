@@ -10,7 +10,7 @@
 #include <avr/interrupt.h>
 #include "avr/iom2560.h"
 
-void Timer3(void)
+void Timer3_init(void)
 {
 	// Compare Output Mode: Fast PWM Mode: Clear OC3A, OC3B, OC3C on Compare Match, set OC3A, OC3B, OC3C at BOTTOM, non-inverting mode (Table 17-4)
 	TCCR3A |= (1<<COM3A1) | (1<<COM3B1) | (1<<COM3C1);					// datasheet 17.11.2
