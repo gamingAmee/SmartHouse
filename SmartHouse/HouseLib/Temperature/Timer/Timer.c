@@ -16,5 +16,4 @@ void Timer1_init(void)
 	TIMSK1 |= (1<<OCIE1A); // Timer/Counter1, Output Compare A Match Interrupt Enable
 	OCR1A =  62499;
 	TCCR1B |= (1<<CS12); // Prescaler: 256
-	//sei();
 }

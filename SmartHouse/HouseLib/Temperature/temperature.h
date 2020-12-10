@@ -11,7 +11,7 @@
 
 int ConvertADCToTemp(unsigned int ADC_data);
 void LCDPrint(void);
-void StepperTigger(void);
+void StepperTrigger(void);
 void TempInit(void);
 
 #endif /* TEMPERATURE_H_ */

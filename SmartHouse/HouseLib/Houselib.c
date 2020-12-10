@@ -6,8 +6,10 @@
  */ 
 
 #include "Temperature/temperature.h"
+#include "FrontDoor/FrontDoor.h"
 
 void Init(void)
 {
 	TempInit();
+	FrontInit();
 }
