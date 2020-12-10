@@ -10,7 +10,7 @@
 #include <avr/interrupt.h>
 #include "avr/iom2560.h"
 
-void Timer0(void)
+void Timer0_init(void)
 {
 	TCCR0A |= (1<<COM0A1);
 	
