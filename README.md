@@ -26,6 +26,8 @@ In this project i wanted to make:
 * A front door with a pin code that if the pin is correct opens the door. ✔️
 * A thermistor that opens a window when the temperature gets to high(over 28), that also has a display.✔️
 
+
+![Test](https://github.com/gamingAmee/SmartHouse/blob/Dev/Untitled%20Diagram-4.png)
 ### Philips Hue.
 #### Components
 * RGB Led
