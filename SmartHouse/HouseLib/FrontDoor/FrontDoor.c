@@ -152,21 +152,21 @@ void StoreKeyPress(char Data)
 		
 		else
 		{
-			if (CheckArray() == 0)
+			if (CheckArray() == 1) //Checks if the entered pin correct
 			{
-				ClearArray();
-				PORTB |= (1 << PB5);
-				_delay_ms(1000);
-				PORTB &= ~(1 << PB5);
 				
-			}
-			else
-			{
 				ClearArray();
 				StepperTrigger1();
 				PORTB |= (1 << PB4);
 				_delay_ms(1000);
 				PORTB &= ~(1 << PB4);
+			}
+			else
+			{
+				ClearArray();
+				PORTB |= (1 << PB5);
+				_delay_ms(1000);
+				PORTB &= ~(1 << PB5);
 				
 			}
 		}
@@ -186,9 +186,9 @@ void FrontInit()
 	Stepper2_init();
 	DDRK = 0b00001111;		// Use PortK, upper nibble = input (rows), lower nibble = output (columns)
 	PORTK |= 0b11110000;	// Enable Pull-up on Row pins (upper nibble)
-	DDRB |= (1 << PB4) | (1 << PB5);
+	DDRB |= (1 << PB4) | (1 << PB5); //Sets PB4 and PB5 to output for Led
 	
-	PCIFR = (1<< PCIE2);
-	PCICR = (1<< PCIF2);
+	PCIFR = (1<< PCIE2); //Pin Change Interrupt Flag (15.2.6)
+	PCICR = (1<< PCIF2); // Pin Change Interrupt Control (15.2.5)
 	PCMSK2 = (1<<PCINT16) | (1<<PCINT17) | (1<<PCINT18) | (1<<PCINT19) | (1<<PCINT20) | (1<<PCINT21) | (1<<PCINT22) | (1<<PCINT23); // watch these pins
 }
