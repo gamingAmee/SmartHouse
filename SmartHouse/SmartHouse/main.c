@@ -28,7 +28,6 @@ ISR(PCINT2_vect)
 {
 	ColumnScan();
 	StoreKeyPress(ReadRows());
-	
 }
 
 int main(void)

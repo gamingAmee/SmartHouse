@@ -21,10 +21,18 @@ Name = Port = Arduino Pin = Keyboard cable #
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
+#include <stdio.h>
+#include <stdbool.h>
 #include "Timer/Timer0.h"
 
+#define GREEN    _BV(PC0)
+#define YELLOW   _BV(PC1)
+#define BROWN	_BV(PC2)
+#define WHITE   _BV(PC3)
+#define DELAY  100
+
 int arrayindex = 0;
-char pinCodeArray[4] = {'1', '2', '3', '4'}; 
+char pinCodeArray[] = { '1', '2', '3', '4'};
 char keyArray[4];
 
 void ColumnScan()
@@ -95,7 +103,38 @@ char ReadRows()
 	return '.';
 }
 
+void StepperTrigger1(void)
+{
+	PORTC = WHITE;
+	_delay_ms(DELAY);
+	PORTC = BROWN;
+	_delay_ms(DELAY);
+	PORTC = YELLOW;
+	_delay_ms(DELAY);
+	PORTC = GREEN;
+	_delay_ms(DELAY);
+}
 
+int CheckArray()
+{
+	for (int index = 0; index < 4; index++)
+	{
+		if(keyArray[index] != pinCodeArray[index])
+		{
+			return 0; //Return Early
+		}
+	}
+	return 1;
+}
+
+void ClearArray(void)
+{
+	arrayindex = 0;
+	keyArray[0] = 0;
+	keyArray[1] = 0;
+	keyArray[2] = 0;
+	keyArray[3] = 0;
+}
 
 void StoreKeyPress(char Data)
 {
@@ -107,30 +146,44 @@ void StoreKeyPress(char Data)
 			{
 				keyArray[arrayindex] = Data;
 				arrayindex++;
+				_delay_ms(500);
 			}
 		}
 		
 		else
 		{
-			if (pinCodeArray != keyArray)
+			if (CheckArray() == 0)
 			{
+				ClearArray();
 				PORTB |= (1 << PB5);
 				_delay_ms(1000);
 				PORTB &= ~(1 << PB5);
+				
 			}
 			else
 			{
+				ClearArray();
+				StepperTrigger1();
 				PORTB |= (1 << PB4);
 				_delay_ms(1000);
 				PORTB &= ~(1 << PB4);
+				
 			}
 		}
 	}
 }
 
+
+void Stepper2_init(void)
+{
+	DDRC |= 0x0f;
+	PORTC |= 0x00;
+}
+
 void FrontInit()
 {
 	Timer0_init();
+	Stepper2_init();
 	DDRK = 0b00001111;		// Use PortK, upper nibble = input (rows), lower nibble = output (columns)
 	PORTK |= 0b11110000;	// Enable Pull-up on Row pins (upper nibble)
 	DDRB |= (1 << PB4) | (1 << PB5);
