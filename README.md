@@ -21,6 +21,11 @@
 ## About the project
 This is a school project.
 
+In this project i wanted to make:
+* Something like Philips Hue. ❌
+* A front door with a pin code that if the pin is correct opens the door. ✔️
+* A thermistor that opens a window when the temperature gets to high(over 28), that also has a display.✔️
+
 ### Philips Hue.
 #### Components
 * RGB Led
