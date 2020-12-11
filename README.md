@@ -28,6 +28,26 @@ In this project i wanted to make:
 
 
 ![Test](https://github.com/gamingAmee/SmartHouse/blob/Dev/Untitled%20Diagram-4.png)
+
+#### Ports that is not in use:
+* Port: A - PA 7
+* Port: B - PB 6-7
+* Port: C - PC 4-7
+* Port: D - PD 0-7
+* Port: E - PE 0-7
+* Port : F - PF 0-7
+* Port: G - PG 0-7
+* Port: H - PH 0-7
+* Port: J - PJ 0-7
+* Port L - PL 0-7
+
+
+#### Ports that is in use:
+* Port: A - PA 0-6
+* Port: B - PB 0-5
+* Port C - PC 0-3
+* Port: K - PK 0-7
+
 ### Philips Hue.
 #### Components
 * RGB Led
